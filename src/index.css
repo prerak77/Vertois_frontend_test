@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.Home{
+  background: #EEEEEE;
+  height : 650px;
+
+}
+.Heading{
+  padding-top :7%;
+}
+.Title { 
+  padding-top: 80px;
+}
