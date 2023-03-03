@@ -24,6 +24,7 @@ const LoginPage = ({ userInputs, onFormChange, onFormSubmit, redirect }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     onFormSubmit();
+    navigate("/main");
     if (redirect === "True") {
       setCorrect(true);
       navigate("/main");
