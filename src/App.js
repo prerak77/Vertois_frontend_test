@@ -66,7 +66,7 @@ const App = () => {
       },
     });
     console.log(abc);
-    if (abc.ok) {
+    if (!abc.ok) {
       fetch("/login_send", {
         mode: "no-cors",
       })
