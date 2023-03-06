@@ -55,7 +55,7 @@ const App = () => {
   };
 
   function handle_Login_info_Submit_Form() {
-    const abc = fetch("/login_add", {
+    const abc = fetch("https://vercel-python-app-liart.vercel.app/login_add", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -67,7 +67,7 @@ const App = () => {
     });
     console.log(abc);
     if (!abc.ok) {
-      fetch("/login_send", {
+      fetch("https://vercel-python-app-liart.vercel.app/login_send", {
         mode: "no-cors",
       })
         .then((res) => {
