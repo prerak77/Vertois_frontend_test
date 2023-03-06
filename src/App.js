@@ -42,7 +42,7 @@ const App = () => {
   };
 
   const handle_Signup_info_Submit_Form = () => {
-    fetch("/signup", {
+    fetch("https://vercel-python-iota-rust.vercel.app/signup", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -54,8 +54,8 @@ const App = () => {
     });
   };
 
-  async function handle_Login_info_Submit_Form() {
-    const abc = await fetch("/login_add", {
+  function handle_Login_info_Submit_Form() {
+    const abc = fetch("https://vercel-python-iota-rust.vercel.app/login_add", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -66,9 +66,10 @@ const App = () => {
       },
     });
     console.log(abc);
-    if (abc.ok) {
-      fetch("/login_send", {
+    if (!abc.ok) {
+      fetch("https://vercel-python-iota-rust.vercel.app/login_send", {
         mode: "no-cors",
+        method: "GET",
       })
         .then((res) => {
           if (res.ok) {
