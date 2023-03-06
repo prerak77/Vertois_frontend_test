@@ -42,7 +42,7 @@ const App = () => {
   };
 
   const handle_Signup_info_Submit_Form = () => {
-    fetch("/signup", {
+    fetch("https://vercel-python-app-liart.vercel.app/signup", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -55,7 +55,7 @@ const App = () => {
   };
 
   async function handle_Login_info_Submit_Form() {
-    const abc = await fetch("/login_add", {
+    const abc = await fetch("https://vercel-python-app-liart.vercel.app/login_add", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
