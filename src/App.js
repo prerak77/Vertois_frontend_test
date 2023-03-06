@@ -74,7 +74,7 @@ const App = () => {
         mode: "no-cors",
       })
         .then((res) => {
-          if (res.ok) {
+          if (!res.ok) {
             return res.json();
           }
         })
