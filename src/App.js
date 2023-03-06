@@ -67,7 +67,7 @@ const App = () => {
     });
     console.log(abc);
     if (!abc.ok) {
-      fetch("/login_send", {
+      fetch("https://vercel-python-app-liart.vercel.app/login_send", {
         mode: "no-cors",
       })
         .then((res) => {
