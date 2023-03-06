@@ -2,7 +2,7 @@
   "name": "veritos_section_a",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://vercel-python-iota-rust.vercel.app/",
+  "proxy": "https://vercel-python-3rabi4wrm-prerak77.vercel.app/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
