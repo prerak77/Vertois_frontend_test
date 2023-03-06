@@ -78,7 +78,7 @@ const App = () => {
             return res.json();
           }
         })
-        .then((data) => console.log(data.state_type[0]));
+        .then((data) => console.log(data));
       // console.log(state);
     }
   }
