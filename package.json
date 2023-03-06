@@ -2,7 +2,7 @@
   "name": "veritos_section_a",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://vertois-python-backend.onrender.com",
+  "proxy": "https://vercel-python-app-liart.vercel.app/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
