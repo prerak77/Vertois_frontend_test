@@ -42,7 +42,7 @@ const App = () => {
   };
 
   const handle_Signup_info_Submit_Form = () => {
-    fetch("/signup", {
+    fetch("https://vercel-python-app-liart.vercel.app/signup", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -55,19 +55,22 @@ const App = () => {
   };
 
   async function handle_Login_info_Submit_Form() {
-    const abc = await fetch("/login_add", {
-      mode: "no-cors",
-      method: "POST",
-      body: JSON.stringify({
-        content: Login_info,
-      }),
-      headers: {
-        "Content-type": "application/json; charset = UTF-8",
-      },
-    });
+    const abc = await fetch(
+      "https://vercel-python-app-liart.vercel.app/login_add",
+      {
+        mode: "no-cors",
+        method: "POST",
+        body: JSON.stringify({
+          content: Login_info,
+        }),
+        headers: {
+          "Content-type": "application/json; charset = UTF-8",
+        },
+      }
+    );
     console.log(abc);
     if (!abc.ok) {
-      fetch("/login_send", {
+      fetch("https://vercel-python-app-liart.vercel.app/login_send", {
         mode: "no-cors",
       })
         .then((res) => {
@@ -75,8 +78,8 @@ const App = () => {
             return res.json();
           }
         })
-        .then((data) => setState(data.state_type[0]));
-      console.log(state);
+        .then((data) => console.log(data.state_type[0]));
+      // console.log(state);
     }
   }
 
