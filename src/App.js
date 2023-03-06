@@ -54,20 +54,17 @@ const App = () => {
     });
   };
 
-  async function handle_Login_info_Submit_Form() {
-    const abc = await fetch(
-      "https://vercel-python-app-liart.vercel.app/login_add",
-      {
-        mode: "no-cors",
-        method: "POST",
-        body: JSON.stringify({
-          content: Login_info,
-        }),
-        headers: {
-          "Content-type": "application/json; charset = UTF-8",
-        },
-      }
-    );
+  function handle_Login_info_Submit_Form() {
+    const abc = fetch("https://vercel-python-app-liart.vercel.app/login_add", {
+      mode: "no-cors",
+      method: "POST",
+      body: JSON.stringify({
+        content: Login_info,
+      }),
+      headers: {
+        "Content-type": "application/json; charset = UTF-8",
+      },
+    });
     console.log(abc);
     if (!abc.ok) {
       fetch("https://vercel-python-app-liart.vercel.app/login_send", {
@@ -76,6 +73,8 @@ const App = () => {
         .then((res) => {
           if (res.ok) {
             return res.json();
+          } else {
+            console.log(res);
           }
         })
         .then((data) => console.log(data));
