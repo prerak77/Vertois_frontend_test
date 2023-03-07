@@ -63,8 +63,8 @@ const App = () => {
     if (true) {
       axios
         .get("https://vercel-python-prerak77.vercel.app/login_send")
-        .then((data) => console.log(data.data.state_type[0]));
-      // console.log(state);
+        .then((data) => setState(data.data.state_type[0]));
+      console.log(state);
     }
   }
 
