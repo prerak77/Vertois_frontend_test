@@ -1,6 +1,6 @@
 import HomePage from "./Pages/HomePage";
 import SignupPage from "./Pages/SignupPage";
-
+import axios from "axios";
 import {
   BrowserRouter as Router,
   Routes,
@@ -56,31 +56,12 @@ const App = () => {
   };
 
   async function handle_Login_info_Submit_Form() {
-    let abc = await fetch("/login_add", {
-      mode: "no-cors",
-      method: "POST",
-      body: JSON.stringify({
-        content: Login_info,
-      }),
-      headers: {
-        "Content-type": "application/json; charset = UTF-8",
-      },
-    });
-    console.log(abc);
-    if (abc.ok) {
-      fetch("/login_send", {
-        mode: "no-cors",
-        method: "GET",
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          } else {
-            console.log(res);
-          }
-        })
-        .then((data) => setState(data.state_type[0]));
-      console.log(state);
+    let abc = await axios.post("/login_add", Login_info);
+    if (true) {
+      axios
+        .get("/login_send")
+        .then((data) => console.log(data.data.state_type[0]));
+      // console.log(state);
     }
   }
 
