@@ -27,7 +27,7 @@ const LoginPage = ({ userInputs, onFormChange, onFormSubmit, redirect }) => {
     if (redirect === "True") {
       setCorrect(true);
       navigate("/main");
-    } else if (redirect === "False") {
+    } else if (redirect === "None") {
       setCorrect(false);
       navigate("/login");
     }

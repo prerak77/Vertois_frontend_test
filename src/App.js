@@ -1,5 +1,6 @@
 import HomePage from "./Pages/HomePage";
 import SignupPage from "./Pages/SignupPage";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -42,7 +43,7 @@ const App = () => {
   };
 
   const handle_Signup_info_Submit_Form = () => {
-    fetch("https://vercel-python-iota-rust.vercel.app/signup", {
+    fetch("https://vercel-python-prerak77.vercel.app/signup", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -54,8 +55,8 @@ const App = () => {
     });
   };
 
-  function handle_Login_info_Submit_Form() {
-    const abc = fetch("https://vercel-python-iota-rust.vercel.app/login_add", {
+  async function handle_Login_info_Submit_Form() {
+    let abc = await fetch("/login_add", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -66,8 +67,8 @@ const App = () => {
       },
     });
     console.log(abc);
-    if (!abc.ok) {
-      fetch("https://vercel-python-iota-rust.vercel.app/login_send", {
+    if (abc.ok) {
+      fetch("/login_send", {
         mode: "no-cors",
         method: "GET",
       })
@@ -78,8 +79,8 @@ const App = () => {
             console.log(res);
           }
         })
-        .then((data) => console.log(data));
-      // console.log(state);
+        .then((data) => setState(data.state_type[0]));
+      console.log(state);
     }
   }
 
