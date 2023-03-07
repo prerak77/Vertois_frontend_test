@@ -30,7 +30,7 @@ const App = () => {
   };
 
   const handleSubmitForm = () => {
-    fetch("/data", {
+    fetch("https://vercel-python-prerak77.vercel.app/data", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
