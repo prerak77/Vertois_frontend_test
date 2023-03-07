@@ -56,10 +56,13 @@ const App = () => {
   };
 
   async function handle_Login_info_Submit_Form() {
-    let abc = await axios.post("/login_add", Login_info);
+    let abc = await axios.post(
+      "https://vercel-python-prerak77.vercel.app/login_add",
+      Login_info
+    );
     if (true) {
       axios
-        .get("/login_send")
+        .get("https://vercel-python-prerak77.vercel.app/login_send")
         .then((data) => console.log(data.data.state_type[0]));
       // console.log(state);
     }
