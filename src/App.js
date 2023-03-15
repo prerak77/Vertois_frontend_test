@@ -33,7 +33,7 @@ const App = () => {
   };
 
   const handleSubmitForm = () => {
-    fetch("http://127.0.0.1:5000/data", {
+    fetch("https://vercel-python-iota-rust.vercel.app/data", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -46,7 +46,7 @@ const App = () => {
   };
 
   const handle_Signup_info_Submit_Form = () => {
-    fetch("http://127.0.0.1:5000/signup", {
+    fetch("https://vercel-python-iota-rust.vercel.app/signup", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -60,7 +60,7 @@ const App = () => {
 
   async function handle_Login_info_Submit_Form() {
     let abc = await axios
-      .post("http://127.0.0.1:5000/login_add", Login_info)
+      .post("https://vercel-python-iota-rust.vercel.app/login_add", Login_info)
       .then((data) => {
         if (data.data.state_type[0] === "True") {
           navigate("/main");
