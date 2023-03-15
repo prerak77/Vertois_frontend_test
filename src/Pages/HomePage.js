@@ -3,9 +3,28 @@ import { MainTitle, NavTitle } from "../Styles/MainText";
 import { SubTitle, InputContainerMain, SubmitButton } from "../Styles/SectionA";
 import { InputFeilds } from "../Components/InputFeilds";
 import { useState } from "react";
+import * as React from "react";
+import { IMaskInput } from "react-imask";
+import IMask from "imask";
 
 const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
   const [data, setData] = useState({});
+
+  const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
+    const { onChange, ...other } = props;
+    return (
+      <IMaskInput
+        {...other}
+        mask="(#00) 000-0000"
+        definitions={{
+          "#": /[1-9]/,
+        }}
+        inputRef={ref}
+        onAccept={(value) => onChange({ target: { name: props.name, value } })}
+        overwrite
+      />
+    );
+  });
 
   const handelChange = (event) => {
     const name = event.target.name;
@@ -17,6 +36,10 @@ const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
     event.preventDefault();
     onFormSubmit();
   };
+
+  // var masked = IMask.PatternMasked({
+  //   mask: "{#}000[aaa]/NIC-`*[**]",
+  // });
 
   return (
     <div id="container">
@@ -123,6 +146,7 @@ const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
                 name={"Telephone"}
                 value={userInputs}
                 onChange={handelChange}
+                // mask={masked}
               ></InputFeilds>
 
               <InputFeilds

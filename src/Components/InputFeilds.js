@@ -1,6 +1,11 @@
 import { Grid } from "@mui/material";
 
-import { InputTitle, InputNumber, Inputs } from "../Styles/SectionA";
+import {
+  InputTitle,
+  InputNumber,
+  Inputs,
+  inputComponent,
+} from "../Styles/SectionA";
 
 export const InputFeilds = (Details) => {
   return (
@@ -9,11 +14,13 @@ export const InputFeilds = (Details) => {
         <InputNumber>{Details.num}</InputNumber> {Details.details}
       </InputTitle>
       <Inputs
-        label={Details.label}
+        // label={Details.label}
         variant="outlined"
         defaultValue={Details.value}
-        onChange = {Details.onChange}
-        name = {Details.name}
+        onChange={Details.onChange}
+        name={Details.name}
+        inputComponent={Details.mask}
+        required
       />
     </Grid>
   );

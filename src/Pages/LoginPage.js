@@ -1,6 +1,6 @@
 import { Grid, TextField } from "@mui/material";
 import { SingupBox, MainText, Submit } from "../Styles/LoginPage";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = ({ userInputs, onFormChange, onFormSubmit, redirect }) => {
@@ -26,10 +26,8 @@ const LoginPage = ({ userInputs, onFormChange, onFormSubmit, redirect }) => {
     onFormSubmit();
     if (redirect === "True") {
       setCorrect(true);
-      navigate("/main");
     } else if (redirect === "False") {
       setCorrect(false);
-      navigate("/login");
     }
   };
   return (
