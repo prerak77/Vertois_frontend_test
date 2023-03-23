@@ -41,7 +41,7 @@ const App = () => {
   };
 
   const handleSubmitForm = () => {
-    fetch("https://vercel-python-prerak77.vercel.app//data", {
+    fetch("https://vercel-python-prerak77.vercel.app/data", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -54,7 +54,7 @@ const App = () => {
   };
 
   const handle_Signup_info_Submit_Form = () => {
-    fetch("https://vercel-python-prerak77.vercel.app//signup", {
+    fetch("https://vercel-python-prerak77.vercel.app/signup", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -68,7 +68,7 @@ const App = () => {
 
   async function handle_Login_info_Submit_Form() {
     let abc = await axios
-      .post("https://vercel-python-prerak77.vercel.app//login_add", Login_info)
+      .post("https://vercel-python-prerak77.vercel.app/login_add", Login_info)
       .then((data) => {
         if (data.data.state_type[0] === "True") {
           navigate("/main");
@@ -81,7 +81,7 @@ const App = () => {
   }
 
   // const handle_Print_info_Submit_Form = () => {
-  //   fetch("https://vercel-python-prerak77.vercel.app//pdf")
+  //   fetch("https://vercel-python-prerak77.vercel.app/pdf")
   //     .then((response) => {
   //       // Use the blob() method to extract the response as a Blob object.
   //       return response.blob();
@@ -102,7 +102,7 @@ const App = () => {
 
   const handle_Print_info_Submit_Form = async () => {
     const response = await fetch(
-      "https://vercel-python-prerak77.vercel.app//pdf",
+      "https://vercel-python-prerak77.vercel.app/pdf",
       {
         method: "POST",
         headers: {
@@ -125,7 +125,7 @@ const App = () => {
   };
 
   const download_pdf = () => {
-    fetch("https://vercel-python-prerak77.vercel.app//downloade", {
+    fetch("https://vercel-python-prerak77.vercel.app/downloade", {
       mode: "no-cors",
       method: "GET",
     })
