@@ -9,7 +9,7 @@ import {
 
 export const InputFeilds = (Details) => {
   return (
-    <Grid item xs={6}>
+    <Grid item xs={4}>
       <InputTitle>
         <InputNumber>{Details.num}</InputNumber> {Details.details}
       </InputTitle>

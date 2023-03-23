@@ -1,6 +1,7 @@
 import HomePage from "./Pages/HomePage";
 import SignupPage from "./Pages/SignupPage";
 import axios from "axios";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,12 +12,15 @@ import {
 
 import { useState } from "react";
 import LoginPage from "./Pages/LoginPage";
+import PrintPage from "./Pages/PrintPage";
 
 const App = () => {
   const [Inputs, setInputs] = useState();
   const [Signup_info, setSignup_info] = useState();
   const [Login_info, setLogin_info] = useState();
+  const [Print_info, setPrint_info] = useState();
   const [state, setState] = useState();
+  const [pdf, setPdf] = useState();
 
   const navigate = useNavigate();
 
@@ -32,8 +36,12 @@ const App = () => {
     setLogin_info(inputValues);
   };
 
+  const handle_Print_info_Form_Change = (inputValues) => {
+    setPrint_info(inputValues);
+  };
+
   const handleSubmitForm = () => {
-    fetch("https://vercel-python-iota-rust.vercel.app/data", {
+    fetch("https://vercel-python-prerak77.vercel.app//data", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -46,7 +54,7 @@ const App = () => {
   };
 
   const handle_Signup_info_Submit_Form = () => {
-    fetch("https://vercel-python-iota-rust.vercel.app/signup", {
+    fetch("https://vercel-python-prerak77.vercel.app//signup", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -60,7 +68,7 @@ const App = () => {
 
   async function handle_Login_info_Submit_Form() {
     let abc = await axios
-      .post("https://vercel-python-iota-rust.vercel.app/login_add", Login_info)
+      .post("https://vercel-python-prerak77.vercel.app//login_add", Login_info)
       .then((data) => {
         if (data.data.state_type[0] === "True") {
           navigate("/main");
@@ -71,6 +79,66 @@ const App = () => {
       });
     // console.log(state);
   }
+
+  // const handle_Print_info_Submit_Form = () => {
+  //   fetch("https://vercel-python-prerak77.vercel.app//pdf")
+  //     .then((response) => {
+  //       // Use the blob() method to extract the response as a Blob object.
+  //       return response.blob();
+  //     })
+  //     .then((blob) => {
+  //       // Create a new URL object using the blob URL of the response.
+  //       const url = URL.createObjectURL(blob);
+
+  //       // Create a new anchor element to trigger the download.
+  //       const a = document.createElement("a");
+  //       a.href = url;
+  //       a.download = "file.pdf";
+
+  //       // Trigger a click event on the anchor element to start the download.
+  //       a.click();
+  //     });
+  // };
+
+  const handle_Print_info_Submit_Form = async () => {
+    const response = await fetch(
+      "https://vercel-python-prerak77.vercel.app//pdf",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content: Print_info,
+        }),
+      }
+    );
+
+    const blob = await response.blob();
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "file.pdf";
+    a.click();
+  };
+
+  const download_pdf = () => {
+    fetch("https://vercel-python-prerak77.vercel.app//downloade", {
+      mode: "no-cors",
+      method: "GET",
+    })
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "BRSR.pdf");
+        document.body.appendChild(link);
+        link.click();
+      });
+  };
 
   return (
     <div className="App">
@@ -104,6 +172,16 @@ const App = () => {
               userInputs={Inputs}
               onFormChange={handleFormChange}
               onFormSubmit={handleSubmitForm}
+            />
+          }
+        />
+        <Route
+          path="/print"
+          element={
+            <PrintPage
+              userInputs={Print_info}
+              onFormChange={handle_Print_info_Form_Change}
+              onFormSubmit={handle_Print_info_Submit_Form}
             />
           }
         />

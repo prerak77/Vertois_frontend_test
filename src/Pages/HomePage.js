@@ -1,4 +1,4 @@
-import { Container, Typography, Button, Grid, Box, top } from "@mui/material";
+import { Container, Typography, Button, Grid, Box } from "@mui/material";
 import { MainTitle, NavTitle } from "../Styles/MainText";
 import { SubTitle, InputContainerMain, SubmitButton } from "../Styles/SectionA";
 import { InputFeilds } from "../Components/InputFeilds";
@@ -6,9 +6,12 @@ import { useState } from "react";
 import * as React from "react";
 import { IMaskInput } from "react-imask";
 import IMask from "imask";
+import Popup from "reactjs-popup";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
   const [data, setData] = useState({});
+  const navigate = useNavigate();
 
   const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
     const { onChange, ...other } = props;
@@ -42,48 +45,16 @@ const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
   // });
 
   return (
-    <div id="container">
-      {/* This is the entery main page */}
-      <Container maxWidth="bg" className="Home">
-        <Container className="TopNav">
-          <Grid container>
-            <Grid item xs={6} md={6}>
-              <Button href="/main" radius="50px">
-                <img
-                  width="100px"
-                  hight="100px"
-                  src="https://pbs.twimg.com/profile_images/885782805086584832/8G2QCORh_400x400.jpg"
-                  alt=""
-                />
-              </Button>
-            </Grid>
-            <Grid item s={6} md={6}>
-              <NavTitle className="Heading" variant="h4">
-                BRSR Report
-              </NavTitle>
-            </Grid>
-            <Grid item s={12} md={12} hight="150px">
-              <Box top="150px"></Box>
-            </Grid>
-          </Grid>
-        </Container>
-        <MainTitle variant="h3" align="center">
-          {"SECTION - A"}
-        </MainTitle>
-        <Typography variant="h3" align="center">
-          {" GENERAL DISCLOSURES"}
-        </Typography>
-      </Container>
-      {/* This is the from page */}
-      <Container maxWidth="bg" className="Home">
+    <Container maxWidth="bg" className="Home">
+      <div id="container">
         <form>
           <InputContainerMain maxWidth="bg">
-            <SubTitle>Section - A</SubTitle>
+            <SubTitle>SECTION - A: GENERAL DISCLOSURES</SubTitle>
 
             <Grid
               container
               rowSpacing={10}
-              columnSpacing={{ xs: 1, sm: 1, md: 6 }}
+              columnSpacing={{ xs: 1, sm: 1, md: 4 }}
             >
               <InputFeilds
                 num={1}
@@ -157,6 +128,46 @@ const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
                 value={userInputs}
                 onChange={handelChange}
               ></InputFeilds>
+              <InputFeilds
+                num={9}
+                details={"Financial year"}
+                label={"Financial year"}
+                name={"Financial year"}
+                value={userInputs}
+                onChange={handelChange}
+              ></InputFeilds>
+              <InputFeilds
+                num={10}
+                details={"Name of the Stock Exchange"}
+                label={"Name of the Stock Exchange"}
+                name={"Name of the Stock Exchange"}
+                value={userInputs}
+                onChange={handelChange}
+              ></InputFeilds>
+              <InputFeilds
+                num={11}
+                details={"Paid-up Capital:"}
+                label={"Paid-up Capital:"}
+                name={"Paid-up Capital:"}
+                value={userInputs}
+                onChange={handelChange}
+              ></InputFeilds>
+              <InputFeilds
+                num={12}
+                details={"Name and contact details"}
+                label={"Name and contact details"}
+                name={"Name and contact details"}
+                value={userInputs}
+                onChange={handelChange}
+              ></InputFeilds>
+              <InputFeilds
+                num={13}
+                details={"Reporting boundary"}
+                label={"Reporting boundary"}
+                name={"Reporting boundary"}
+                value={userInputs}
+                onChange={handelChange}
+              ></InputFeilds>
             </Grid>
           </InputContainerMain>
           <SubmitButton
@@ -167,9 +178,18 @@ const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
           >
             Submit
           </SubmitButton>
+          <SubmitButton
+            variant="contained"
+            color="success"
+            onClick={() => {
+              navigate("/print");
+            }}
+          >
+            Print
+          </SubmitButton>
         </form>
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 };
 
