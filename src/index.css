@@ -22,3 +22,10 @@ code {
 .Title { 
   padding-top: 80px;
 }
+.mobile{
+  position: "relative";
+  left: "238px";
+  top: "20px";
+  height: "30px";
+  width: "250px";
+}

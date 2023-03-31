@@ -41,7 +41,7 @@ const App = () => {
   };
 
   const handleSubmitForm = () => {
-    fetch("https://vercel-python-prerak77.vercel.app/data", {
+    fetch("http://127.0.0.1:5000/data", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -54,7 +54,7 @@ const App = () => {
   };
 
   const handle_Signup_info_Submit_Form = () => {
-    fetch("https://vercel-python-prerak77.vercel.app/signup", {
+    fetch("http://127.0.0.1:5000/signup", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -68,7 +68,7 @@ const App = () => {
 
   async function handle_Login_info_Submit_Form() {
     let abc = await axios
-      .post("https://vercel-python-prerak77.vercel.app/login_add", Login_info)
+      .post("http://127.0.0.1:5000/login_add", Login_info)
       .then((data) => {
         if (data.data.state_type[0] === "True") {
           navigate("/main");
@@ -80,39 +80,16 @@ const App = () => {
     // console.log(state);
   }
 
-  // const handle_Print_info_Submit_Form = () => {
-  //   fetch("https://vercel-python-prerak77.vercel.app/pdf")
-  //     .then((response) => {
-  //       // Use the blob() method to extract the response as a Blob object.
-  //       return response.blob();
-  //     })
-  //     .then((blob) => {
-  //       // Create a new URL object using the blob URL of the response.
-  //       const url = URL.createObjectURL(blob);
-
-  //       // Create a new anchor element to trigger the download.
-  //       const a = document.createElement("a");
-  //       a.href = url;
-  //       a.download = "file.pdf";
-
-  //       // Trigger a click event on the anchor element to start the download.
-  //       a.click();
-  //     });
-  // };
-
   const handle_Print_info_Submit_Form = async () => {
-    const response = await fetch(
-      "https://vercel-python-prerak77.vercel.app/pdf",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          content: Print_info,
-        }),
-      }
-    );
+    const response = await fetch("http://127.0.0.1:5000/pdf", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        content: Print_info,
+      }),
+    });
 
     const blob = await response.blob();
 
@@ -125,7 +102,7 @@ const App = () => {
   };
 
   const download_pdf = () => {
-    fetch("https://vercel-python-prerak77.vercel.app/downloade", {
+    fetch("http://127.0.0.1:5000/downloade", {
       mode: "no-cors",
       method: "GET",
     })

@@ -1,48 +1,47 @@
 import { Container, Typography, Button, Grid, Box } from "@mui/material";
-import { MainTitle, NavTitle } from "../Styles/MainText";
-import { SubTitle, InputContainerMain, SubmitButton } from "../Styles/SectionA";
+import {
+  SubTitle,
+  InputContainerMain,
+  SubmitButton,
+  Inputs,
+} from "../Styles/SectionA";
 import { InputFeilds } from "../Components/InputFeilds";
 import { useState } from "react";
 import * as React from "react";
-import { IMaskInput } from "react-imask";
-import IMask from "imask";
-import Popup from "reactjs-popup";
 import { useNavigate } from "react-router-dom";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/bootstrap.css";
+import { InputTitle, InputNumber } from "../Styles/SectionA";
+import YearPicker from "react-year-picker";
 
 const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
   const [data, setData] = useState({});
+  const [mobileNumber, setMobileNumber] = useState("");
+
   const navigate = useNavigate();
 
-  const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
-    const { onChange, ...other } = props;
-    return (
-      <IMaskInput
-        {...other}
-        mask="(#00) 000-0000"
-        definitions={{
-          "#": /[1-9]/,
-        }}
-        inputRef={ref}
-        onAccept={(value) => onChange({ target: { name: props.name, value } })}
-        overwrite
-      />
-    );
-  });
+  const handleMobileNumberChange = (value, country) => {
+    setMobileNumber(value);
+  };
 
   const handelChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    onFormChange((values) => ({ ...values, [name]: value }));
+    setData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    onFormChange((values) => ({
+      ...values,
+      [name]: value,
+      telephone: mobileNumber,
+    }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onFormSubmit();
   };
-
-  // var masked = IMask.PatternMasked({
-  //   mask: "{#}000[aaa]/NIC-`*[**]",
-  // });
 
   return (
     <Container maxWidth="bg" className="Home">
@@ -74,14 +73,28 @@ const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
                 onChange={handelChange}
               ></InputFeilds>
 
-              <InputFeilds
+              {/* <InputFeilds
                 num={3}
                 details={"Year of incorporation"}
                 label={"Year"}
                 name={"Year"}
                 value={userInputs}
                 onChange={handelChange}
-              ></InputFeilds>
+              ></InputFeilds> */}
+              <Grid item xs={4}>
+                <InputTitle>
+                  <InputNumber>{3}</InputNumber> {"Year of incorporation"}
+                </InputTitle>
+                <Inputs
+                  // label={Details.label}
+                  variant="outlined"
+                  defaultValue={userInputs}
+                  onChange={handelChange}
+                  name={"Year"}
+                  required
+                  type="number"
+                />
+              </Grid>
 
               <InputFeilds
                 num={4}
@@ -110,7 +123,7 @@ const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
                 onChange={handelChange}
               ></InputFeilds>
 
-              <InputFeilds
+              {/* <InputFeilds
                 num={7}
                 details={"Telephone"}
                 label={"Telephone"}
@@ -118,7 +131,31 @@ const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
                 value={userInputs}
                 onChange={handelChange}
                 // mask={masked}
-              ></InputFeilds>
+              ></InputFeilds> */}
+
+              <Grid item xs={4}>
+                <InputTitle>
+                  <InputNumber>{4}</InputNumber> {"Telephone"}
+                </InputTitle>
+                <PhoneInput
+                  label={"Telephone"}
+                  variant="outlined"
+                  details={"Telephone"}
+                  name={"Telephone"}
+                  value={mobileNumber}
+                  onChange={handleMobileNumberChange}
+                  placeholder=" "
+                  inputStyle={{
+                    position: "relative",
+                    left: "238px",
+                    top: "20px",
+                    height: "55px",
+                    width: "250px",
+                    backgroundColor: "none",
+                    background: "#eeeeee",
+                  }}
+                />
+              </Grid>
 
               <InputFeilds
                 num={8}
@@ -128,14 +165,31 @@ const HomePage = ({ userInputs, onFormChange, onFormSubmit }) => {
                 value={userInputs}
                 onChange={handelChange}
               ></InputFeilds>
-              <InputFeilds
+
+              {/* <InputFeilds
                 num={9}
                 details={"Financial year"}
                 label={"Financial year"}
                 name={"Financial year"}
                 value={userInputs}
                 onChange={handelChange}
-              ></InputFeilds>
+              ></InputFeilds> */}
+
+              <Grid item xs={4}>
+                <InputTitle>
+                  <InputNumber>{9}</InputNumber> {"Financial year"}
+                </InputTitle>
+                <Inputs
+                  // label={Details.label}
+                  variant="outlined"
+                  defaultValue={userInputs}
+                  onChange={handelChange}
+                  name={"Financial year"}
+                  required
+                  type="number"
+                />
+              </Grid>
+
               <InputFeilds
                 num={10}
                 details={"Name of the Stock Exchange"}

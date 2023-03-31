@@ -24,8 +24,11 @@
     "react-hook-form": "^7.43.1",
     "react-imask": "^6.4.3",
     "react-pdf-html": "^1.1.18",
+    "react-phone-input-2": "^2.15.1",
+    "react-restrict-input": "^1.0.1",
     "react-router-dom": "^6.8.1",
     "react-scripts": "^5.0.1",
+    "react-year-picker": "^0.3.7",
     "reactjs-popup": "^2.0.5",
     "web-vitals": "^2.1.4"
   },
