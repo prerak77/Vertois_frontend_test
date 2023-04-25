@@ -40,7 +40,7 @@ const PrintPage = ({
   //loads once once the page is loaded and once the data is recieved from the backend the data is
   //stored in the state variabel 'data' to display later
   useEffect(() => {
-    const response = fetch("http://127.0.0.1:5000/user", {
+    const response = fetch("https://vercel-python-prerak77.vercel.app/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
