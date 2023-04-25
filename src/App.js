@@ -88,7 +88,7 @@ const App = () => {
   //the mode is 'no-cors'to prevent cors report and the HTTP method is POST since data is sent to
   //the backend. This send the BRSR report data to store in the database.
   const handleSubmitForm = () => {
-    fetch("https://vercel-python-prerak77.vercel.app/data", {
+    fetch("http://127.0.0.1:5000/data", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -103,7 +103,7 @@ const App = () => {
   //This function send data of the signup page user data to the signup endpoint in the backend
   //once the signup button is pressed
   const handle_Signup_info_Submit_Form = () => {
-    fetch("https://vercel-python-prerak77.vercel.app/signup", {
+    fetch("http://127.0.0.1:5000/signup", {
       mode: "no-cors",
       method: "POST",
       body: JSON.stringify({
@@ -122,7 +122,7 @@ const App = () => {
   //variable and navigate to the specific page
   async function handle_Login_info_Submit_Form() {
     let abc = await axios
-      .post("https://vercel-python-prerak77.vercel.app/login_add", Login_info)
+      .post("http://127.0.0.1:5000/login_add", Login_info)
       .then((data) => {
         if (data.data.state_type[0] === "True") {
           setauthenticated("True");
@@ -140,18 +140,15 @@ const App = () => {
   //the backend and recieve all the company information related to the user that is logged in
   //then if the print button is pressed then it downloads the pdf with all the company details
   const handle_Print_info_Submit_Form = async () => {
-    const response = await fetch(
-      "https://vercel-python-prerak77.vercel.app/pdf",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          content: Print_info,
-        }),
-      }
-    );
+    const response = await fetch("http://127.0.0.1:5000/pdf", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        content: Print_info,
+      }),
+    });
 
     const blob = await response.blob();
 
@@ -164,7 +161,7 @@ const App = () => {
   };
 
   // const download_pdf = () => {
-  //   fetch("https://vercel-python-prerak77.vercel.app/downloade", {
+  //   fetch("http://127.0.0.1:5000/downloade", {
   //     mode: "no-cors",
   //     method: "GET",
   //   })
